@@ -6,13 +6,6 @@
       "email": "alice@mail.com",
       "passwordHash": "$2b$10$5hWX8f2p.wfs6fZ1XTBdY.jTH3eyEYg9zpwKLD9gvCvWBHcecpVHG",
       "createdAt": "2026-03-05T04:15:22.640Z"
-    },
-    {
-      "id": "e5219179-5a83-4d2f-aaf8-3686edbaf46b",
-      "name": "Vithor",
-      "email": "vithor@mail.com",
-      "passwordHash": "$2b$10$j2pF4SLPvVB.sgsa9pUtSeRPL3Q4HmG2cKJ5lZvL9cYhmwTCEoR9a",
-      "createdAt": "2026-03-06T11:17:36.349Z"
     }
   ],
   "cards": [
@@ -21,27 +14,9 @@
       "userId": "b7b0b2a2-41ce-4d44-9b82-435eeb6f3eff",
       "last4": "1234",
       "limitCents": 500000,
-      "availableLimitCents": 500000,
+      "availableLimitCents": 490000,
       "status": "ACTIVE",
       "createdAt": "2026-03-05T04:16:02.004Z"
-    },
-    {
-      "id": "ac3e4fb3-c2c4-4706-a0d4-95e0178a3d9d",
-      "userId": "e5219179-5a83-4d2f-aaf8-3686edbaf46b",
-      "last4": "1234",
-      "limitCents": 50000000,
-      "availableLimitCents": 50000000,
-      "status": "ACTIVE",
-      "createdAt": "2026-03-06T11:19:39.374Z"
-    },
-    {
-      "id": "caea8ea7-993e-4db3-9127-863ad31213cc",
-      "userId": "e5219179-5a83-4d2f-aaf8-3686edbaf46b",
-      "last4": "1234",
-      "limitCents": 50000000,
-      "availableLimitCents": 50000000,
-      "status": "ACTIVE",
-      "createdAt": "2026-03-06T11:19:41.837Z"
     }
   ],
   "transactions": [
@@ -51,32 +26,9 @@
       "userId": "b7b0b2a2-41ce-4d44-9b82-435eeb6f3eff",
       "amountCents": 10000,
       "description": "Compra mercado",
-      "status": "CANCELLED",
+      "status": "APPROVED",
       "referenceMonth": "2026-03",
-      "createdAt": "2026-03-05T04:16:59.252Z",
-      "cancelledAt": "2026-03-06T11:25:56.524Z"
-    },
-    {
-      "id": "8c9ae180-8f05-41a4-b763-7ce7dec2eb25",
-      "cardId": "ac3e4fb3-c2c4-4706-a0d4-95e0178a3d9d",
-      "userId": "e5219179-5a83-4d2f-aaf8-3686edbaf46b",
-      "amountCents": 10000,
-      "description": "Compra mercado",
-      "status": "CANCELLED",
-      "referenceMonth": "2026-03",
-      "createdAt": "2026-03-06T11:22:13.991Z",
-      "cancelledAt": "2026-03-06T11:24:45.148Z"
-    },
-    {
-      "id": "79a57305-d7af-4bb9-accc-514bb8063d2e",
-      "cardId": "ac3e4fb3-c2c4-4706-a0d4-95e0178a3d9d",
-      "userId": "e5219179-5a83-4d2f-aaf8-3686edbaf46b",
-      "amountCents": 10000,
-      "description": "Compra mercado",
-      "status": "CHARGEBACK",
-      "referenceMonth": "2026-03",
-      "createdAt": "2026-03-06T11:26:43.379Z",
-      "chargebackAt": "2026-03-06T11:27:20.888Z"
+      "createdAt": "2026-03-05T04:16:59.252Z"
     }
   ],
   "invoices": [
@@ -90,15 +42,6 @@
         "728f2fee-3432-425a-bdcd-121371b72dc4"
       ],
       "generatedAt": "2026-03-05T04:17:21.615Z"
-    },
-    {
-      "id": "6799db5c-d761-413d-8039-f1b6b8282996",
-      "cardId": "ac3e4fb3-c2c4-4706-a0d4-95e0178a3d9d",
-      "userId": "e5219179-5a83-4d2f-aaf8-3686edbaf46b",
-      "referenceMonth": "2026-03",
-      "totalCents": 0,
-      "transactionIds": [],
-      "generatedAt": "2026-03-06T11:27:48.243Z"
     }
   ]
 }
