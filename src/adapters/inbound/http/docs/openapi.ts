@@ -1,3 +1,29 @@
+// Helper functions to reduce duplication
+const createJsonResponse = (description: string, schemaRef: string) => ({
+  description,
+  content: {
+    "application/json": {
+      schema: { $ref: schemaRef }
+    }
+  }
+});
+
+const createJsonRequestBody = (schemaRef: string) => ({
+  required: true,
+  content: {
+    "application/json": {
+      schema: { $ref: schemaRef }
+    }
+  }
+});
+
+const createPathParameter = (name: string) => ({
+  name,
+  in: "path" as const,
+  required: true,
+  schema: { type: "string" }
+});
+
 export const openApiDocument = {
   openapi: "3.0.3",
   info: {
@@ -132,33 +158,10 @@ export const openApiDocument = {
       post: {
         tags: ["Users"],
         summary: "Criar usuario",
-        requestBody: {
-          required: true,
-          content: {
-            "application/json": {
-              schema: {
-                $ref: "#/components/schemas/CreateUserRequest"
-              }
-            }
-          }
-        },
+        requestBody: createJsonRequestBody("#/components/schemas/CreateUserRequest"),
         responses: {
-          "201": {
-            description: "Usuario criado",
-            content: {
-              "application/json": {
-                schema: { $ref: "#/components/schemas/UserResponse" }
-              }
-            }
-          },
-          "400": {
-            description: "Erro de validacao",
-            content: {
-              "application/json": {
-                schema: { $ref: "#/components/schemas/ErrorResponse" }
-              }
-            }
-          }
+          "201": createJsonResponse("Usuario criado", "#/components/schemas/UserResponse"),
+          "400": createJsonResponse("Erro de validacao", "#/components/schemas/ErrorResponse")
         }
       }
     },
@@ -166,33 +169,10 @@ export const openApiDocument = {
       post: {
         tags: ["Cards"],
         summary: "Criar cartao",
-        requestBody: {
-          required: true,
-          content: {
-            "application/json": {
-              schema: {
-                $ref: "#/components/schemas/CreateCardRequest"
-              }
-            }
-          }
-        },
+        requestBody: createJsonRequestBody("#/components/schemas/CreateCardRequest"),
         responses: {
-          "201": {
-            description: "Cartao criado",
-            content: {
-              "application/json": {
-                schema: { $ref: "#/components/schemas/CardResponse" }
-              }
-            }
-          },
-          "404": {
-            description: "Usuario nao encontrado",
-            content: {
-              "application/json": {
-                schema: { $ref: "#/components/schemas/ErrorResponse" }
-              }
-            }
-          }
+          "201": createJsonResponse("Cartao criado", "#/components/schemas/CardResponse"),
+          "404": createJsonResponse("Usuario nao encontrado", "#/components/schemas/ErrorResponse")
         }
       }
     },
@@ -200,25 +180,9 @@ export const openApiDocument = {
       post: {
         tags: ["Transactions"],
         summary: "Processar transacao",
-        requestBody: {
-          required: true,
-          content: {
-            "application/json": {
-              schema: {
-                $ref: "#/components/schemas/ProcessTransactionRequest"
-              }
-            }
-          }
-        },
+        requestBody: createJsonRequestBody("#/components/schemas/ProcessTransactionRequest"),
         responses: {
-          "201": {
-            description: "Transacao processada",
-            content: {
-              "application/json": {
-                schema: { $ref: "#/components/schemas/TransactionResponse" }
-              }
-            }
-          }
+          "201": createJsonResponse("Transacao processada", "#/components/schemas/TransactionResponse")
         }
       }
     },
@@ -226,23 +190,9 @@ export const openApiDocument = {
       post: {
         tags: ["Transactions"],
         summary: "Cancelar transacao",
-        parameters: [
-          {
-            name: "transactionId",
-            in: "path",
-            required: true,
-            schema: { type: "string" }
-          }
-        ],
+        parameters: [createPathParameter("transactionId")],
         responses: {
-          "200": {
-            description: "Transacao cancelada",
-            content: {
-              "application/json": {
-                schema: { $ref: "#/components/schemas/TransactionResponse" }
-              }
-            }
-          }
+          "200": createJsonResponse("Transacao cancelada", "#/components/schemas/TransactionResponse")
         }
       }
     },
@@ -250,23 +200,9 @@ export const openApiDocument = {
       post: {
         tags: ["Transactions"],
         summary: "Simular chargeback",
-        parameters: [
-          {
-            name: "transactionId",
-            in: "path",
-            required: true,
-            schema: { type: "string" }
-          }
-        ],
+        parameters: [createPathParameter("transactionId")],
         responses: {
-          "200": {
-            description: "Chargeback aplicado",
-            content: {
-              "application/json": {
-                schema: { $ref: "#/components/schemas/TransactionResponse" }
-              }
-            }
-          }
+          "200": createJsonResponse("Chargeback aplicado", "#/components/schemas/TransactionResponse")
         }
       }
     },
@@ -275,12 +211,7 @@ export const openApiDocument = {
         tags: ["Invoices"],
         summary: "Gerar ou consultar fatura mensal",
         parameters: [
-          {
-            name: "cardId",
-            in: "path",
-            required: true,
-            schema: { type: "string" }
-          },
+          createPathParameter("cardId"),
           {
             name: "referenceMonth",
             in: "query",
@@ -289,14 +220,7 @@ export const openApiDocument = {
           }
         ],
         responses: {
-          "200": {
-            description: "Fatura do mes",
-            content: {
-              "application/json": {
-                schema: { $ref: "#/components/schemas/InvoiceResponse" }
-              }
-            }
-          }
+          "200": createJsonResponse("Fatura do mes", "#/components/schemas/InvoiceResponse")
         }
       }
     }
