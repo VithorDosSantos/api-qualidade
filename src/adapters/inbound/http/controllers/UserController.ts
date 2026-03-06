@@ -12,8 +12,7 @@ export class UserController {
       password: String(request.body.password ?? "")
     });
 
-    const { passwordHash, ...safeUser } = user.toJSON();
-    void passwordHash;
+    const { passwordHash: _passwordHash, ...safeUser } = user.toJSON();
 
     response.status(HTTP_STATUS.CREATED).json(safeUser);
   }
