@@ -1,6 +1,7 @@
 {
   "name": "api-qualidade",
   "version": "1.0.0",
+  "type": "module",
   "description": "Mini Fintech backend with Hexagonal Architecture",
   "main": "dist/server.js",
   "types": "dist/server.d.ts",
